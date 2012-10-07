@@ -1,7 +1,6 @@
 package rts.lab03;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -26,22 +25,7 @@ public class View {
 	private JButton btnStart;
 private JCheckBox chckbxDeadLock;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					View window = new View();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -54,6 +38,7 @@ private JCheckBox chckbxDeadLock;
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setVisible(true);
 		frame.setBounds(100, 100, 650, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

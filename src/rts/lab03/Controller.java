@@ -1,6 +1,5 @@
 package rts.lab03;
 
-import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,6 @@ public class Controller {
 	private List<Plate> plates = new ArrayList<Plate>();
 	private List<Fork> forks = new ArrayList<Fork>();
 	private ThreadGroup philosopherGroup = new ThreadGroup("philosophers");
-	private List<Thread> philospherThreads = new ArrayList<Thread>();
 
 	private Boolean deadlock;
 	private JTextArea textArea;
@@ -54,6 +52,9 @@ public class Controller {
 
 	}
 
+	/**
+	 * Создание потоков
+	 */
 	public void start() {
 		textArea.append("clear \n");
 		textArea.append("deadlock: " + deadlock + "\n");
@@ -64,6 +65,9 @@ public class Controller {
 
 	}
 
+	/**
+	 * Освобождение всех тарелокк и вилок
+	 */
 	public void clear() {
 		for (Plate plate : plates) {
 			plate.setEnable(true);
@@ -81,10 +85,17 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * Прерывание потоков
+	 */
 	public void stop() {
 		philosopherGroup.interrupt();
 	}
 
+	/**
+	 * Поиск свободной тарелки
+	 * @return
+	 */
 	public synchronized Plate getFreePlate() {
 		Plate freePlate = null;
 		for (Plate plate : plates) {
@@ -98,6 +109,10 @@ public class Controller {
 		return freePlate;
 	}
 
+	/**
+	 * @param fork - вилка, которуб пытается взять философ
+	 * @return - если вилку можно взять - true, иначе -false
+	 */
 	public synchronized Boolean takeFork(Fork fork) {
 		if (fork.isEnable()) {
 			fork.setEnable(false);
@@ -108,6 +123,9 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * @param plate - освобождаемая тарелка, также освобождаются вилки около этой тарелки
+	 */
 	public synchronized void releasePlateAndForks(Plate plate) {
 		plate.setEnable(true);
 		lblPlates.get(plates.indexOf(plate)).setEnabled(true);
@@ -116,11 +134,17 @@ public class Controller {
 		releaseFork(plate.getRightFork());
 	}
 
+	/**
+	 * @param fork - освобождаемая вилка
+	 */
 	public synchronized void releaseFork(Fork fork) {
 		fork.setEnable(true);
 		lblForks.get(forks.indexOf(fork)).setEnabled(true);
 	}
 
+	/**
+	 * @param message - выводимое сообщение
+	 */
 	public void showMessage(String message) {
 		textArea.append(message);
 	}
