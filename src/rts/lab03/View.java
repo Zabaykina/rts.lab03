@@ -79,7 +79,7 @@ private JCheckBox chckbxDeadLock;
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridheight = 5;
-		gbc_scrollPane.insets = new Insets(5, 0, 5, 5);
+		gbc_scrollPane.insets = new Insets(5, 0, 0, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 5;
 		gbc_scrollPane.gridy = 0;
@@ -115,6 +115,15 @@ private JCheckBox chckbxDeadLock;
 		gbc_lblPlate5.gridx = 0;
 		gbc_lblPlate5.gridy = 2;
 		panel.add(lblPlate5, gbc_lblPlate5);
+		
+		JLabel label = new JLabel("Макароны");
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.gridheight = 2;
+		gbc_label.gridwidth = 3;
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 1;
+		gbc_label.gridy = 2;
+		panel.add(label, gbc_label);
 
 		JLabel lblPlate2 = new JLabel("Тарелка 2");
 		GridBagConstraints gbc_lblPlate2 = new GridBagConstraints();
