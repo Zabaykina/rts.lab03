@@ -126,7 +126,7 @@ public class Controller {
 	/**
 	 * @param plate - освобождаемая тарелка, также освобождаются вилки около этой тарелки
 	 */
-	public synchronized void releasePlateAndForks(Plate plate) {
+	public  void releasePlateAndForks(Plate plate) {
 		plate.setEnable(true);
 		lblPlates.get(plates.indexOf(plate)).setEnabled(true);
 
@@ -137,7 +137,7 @@ public class Controller {
 	/**
 	 * @param fork - освобождаемая вилка
 	 */
-	public synchronized void releaseFork(Fork fork) {
+	public  void releaseFork(Fork fork) {
 		fork.setEnable(true);
 		lblForks.get(forks.indexOf(fork)).setEnabled(true);
 	}

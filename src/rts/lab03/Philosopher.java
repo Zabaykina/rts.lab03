@@ -25,7 +25,7 @@ public class Philosopher implements Runnable {
 		}
 	}
 
-	public synchronized void haveLunch() throws InterruptedException {
+	public  void haveLunch() throws InterruptedException {
 		Plate plate = controller.getFreePlate();
 		Fork leftFork = plate.getLeftFork();
 		Fork rightFork = plate.getRightFork();
@@ -77,7 +77,7 @@ public class Philosopher implements Runnable {
 		}
 	}
 
-	public synchronized void finishLunch(Plate plate) {
+	public  void finishLunch(Plate plate) {
 		controller.releasePlateAndForks(plate);
 		controller.showMessage("Философ " + id + " освободил тарелку "
 				+ plate.getId() + ", вилки " + plate.getLeftFork().getId()
